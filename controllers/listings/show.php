@@ -5,8 +5,11 @@ $db = new Database($config);
 
 $id = $_GET['id'] ?? '';
 
-$listing = $db->query('SELECT * FROM listings WHERE id = ' .$id)->fetch();
+$params = [
+    'id' => $od
+];
 
-inspect($listing);
+
+$listing = $db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
 
 loadView('listings/show');
